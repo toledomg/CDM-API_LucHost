@@ -1,10 +1,6 @@
 import { AppDataSource, userRepo } from '../../data-source';
 import { User } from '../../entities';
-import { tUserResponse } from '../../interfaces/user.interfaces';
-import {
-  UserSchemaRequest,
-  UsersSchemaRequestAll,
-} from '../../schemas/user.schema';
+import { UserSchemaRequest } from '../../schemas/user.schema';
 
 export const listAllUsersService = async () => {
   const userRepository: userRepo = AppDataSource.getRepository(User);

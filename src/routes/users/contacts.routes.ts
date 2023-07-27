@@ -2,8 +2,10 @@ import { Router } from 'express';
 import { isTokenValidMiddleware } from '../../middleware/isTokenValid.middleware';
 import {
   createContactController,
+  deleteContactController,
   listAllContactController,
   listContactController,
+  updateContactController,
 } from '../../controllers/contacts/contacts.controllers';
 
 export const contactsRoutes: Router = Router();
@@ -12,5 +14,5 @@ export const contactsRoutes: Router = Router();
 contactsRoutes.post('', isTokenValidMiddleware, createContactController);
 contactsRoutes.get('', isTokenValidMiddleware, listAllContactController);
 contactsRoutes.get('/:id', isTokenValidMiddleware, listContactController);
-contactsRoutes.patch('/:id');
-contactsRoutes.delete('/:id');
+contactsRoutes.patch('/:id', isTokenValidMiddleware, updateContactController);
+contactsRoutes.delete('/:id', isTokenValidMiddleware, deleteContactController);
