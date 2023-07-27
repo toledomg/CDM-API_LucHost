@@ -8,7 +8,9 @@ import {
   DeleteDateColumn,
   BeforeInsert,
   BeforeUpdate,
+  OneToMany,
 } from 'typeorm';
+import { Contact } from './contacts.entities';
 
 @Entity('users')
 export class User {
@@ -45,4 +47,7 @@ export class User {
       this.password = hashSync(this.password, 10);
     }
   }
+
+  @OneToMany(() => Contact, (contact) => contact.user)
+  contacts: Contact[];
 }

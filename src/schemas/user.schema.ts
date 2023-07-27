@@ -11,24 +11,24 @@ export const userSchema = z.object({
   deletedAt: z.string().nullish(),
 });
 
-export const requestUserSchema = userSchema.omit({
+export const UserSchemaRequest = userSchema.omit({
   id: true,
   createdAt: true,
   updatedAt: true,
   deletedAt: true,
 });
 
-export const responseUserSchema = userSchema.omit({
+export const UserSchemaResponse = userSchema.omit({
   password: true,
 });
 
-export const requestAllUsersSchema = z.array(responseUserSchema);
+export const UsersSchemaRequestAll = z.array(UserSchemaResponse);
 
-export const updateUserSchema = requestUserSchema
-  .partial()
-  .omit({ admin: true });
+export const UserSchemaUpdate = UserSchemaRequest.partial().omit({
+  admin: true,
+});
 
-export const userSchedulesSchema = userSchema.omit({
+export const UserSchemaSchedules = userSchema.omit({
   name: true,
   createdAt: true,
   deletedAt: true,

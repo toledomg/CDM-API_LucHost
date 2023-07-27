@@ -1,7 +1,7 @@
 import { AppDataSource, userRepo } from '../../data-source';
 import { User } from '../../entities/user.entities';
 import { tUserRequest, tUserResponse } from '../../interfaces/user.interfaces';
-import { responseUserSchema } from '../../schemas/user.schema';
+import { UserSchemaRequest } from '../../schemas/user.schema';
 
 export const createUserService = async (
   userData: tUserRequest
@@ -12,7 +12,7 @@ export const createUserService = async (
 
   await userRepository.save(user);
 
-  const newUser = responseUserSchema.parse(user);
+  const newUser = UserSchemaRequest.parse(user);
 
   return newUser;
 };

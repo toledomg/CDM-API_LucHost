@@ -6,7 +6,7 @@ import {
 } from '../../controllers/users/user.controller';
 import { ensureBodyIsValidMiddleware } from '../../middleware/ensureBodyIsValid.middleware';
 import { Router } from 'express';
-import { requestUserSchema, updateUserSchema } from '../../schemas/user.schema';
+import { UserSchemaRequest, UserSchemaUpdate } from '../../schemas/user.schema';
 import { ensureEmailExistMiddleware } from '../../middleware/ensureEmailExist.middleware';
 import { isTokenValidMiddleware } from '../../middleware/isTokenValid.middleware';
 import { ensureIdUserExist } from '../../middleware/ensureIdUserExist.middleware';
@@ -17,7 +17,7 @@ export const userRoutes: Router = Router();
 userRoutes.post(
   '',
   ensureEmailExistMiddleware,
-  ensureBodyIsValidMiddleware(requestUserSchema),
+  ensureBodyIsValidMiddleware(UserSchemaRequest),
   createUserController
 );
 
@@ -35,7 +35,7 @@ userRoutes.patch(
   isAdminOrOwnerPermissionMiddleware('ownerAndAdmin'),
   ensureIdUserExist,
   ensureEmailExistMiddleware,
-  ensureBodyIsValidMiddleware(updateUserSchema),
+  ensureBodyIsValidMiddleware(UserSchemaUpdate),
   updateUserController
 );
 
