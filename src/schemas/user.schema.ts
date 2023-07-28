@@ -5,6 +5,7 @@ export const userSchema = z.object({
   name: z.string().min(3).max(45),
   email: z.string().min(4).max(45).email(),
   password: z.string().max(20),
+  phone: z.string().max(11),
   admin: z.boolean().optional().default(false),
   createdAt: z.string(),
   updatedAt: z.string(),
@@ -20,6 +21,10 @@ export const UserSchemaRequest = userSchema.omit({
 
 export const UserSchemaResponse = userSchema.omit({
   password: true,
+  admin: true,
+  createdAt: true,
+  updatedAt: true,
+  deletedAt: true,
 });
 
 export const UsersSchemaRequestAll = z.array(UserSchemaResponse);

@@ -29,6 +29,9 @@ export class User {
   @Column({ type: 'varchar', length: 120 })
   password: string;
 
+  @Column({ type: 'varchar', length: 11 })
+  phone: string;
+
   @CreateDateColumn({ type: 'date' })
   createdAt: string;
 
