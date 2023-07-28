@@ -22,7 +22,7 @@ export const UserSchemaRequest = userSchema.omit({
 export const UserSchemaResponse = userSchema.omit({
   password: true,
   admin: true,
-  createdAt: true,
+  // createdAt: true,
   updatedAt: true,
   deletedAt: true,
 });
