@@ -2,7 +2,10 @@ import { tUserRequest } from './../../interfaces/user.interfaces';
 import { AppDataSource, userRepo } from '../../data-source';
 import { User } from '../../entities';
 import { tUserResponse } from '../../interfaces/user.interfaces';
-import { UserSchemaRequest } from '../../schemas/user.schema';
+import {
+  UserSchemaRequest,
+  UserSchemaResponse,
+} from '../../schemas/user.schema';
 
 export const updateUserService = async (
   body: tUserRequest,
@@ -21,7 +24,7 @@ export const updateUserService = async (
 
   await userRepository.save(updateUser);
 
-  const responseUser = UserSchemaRequest.parse(updateUser);
+  const responseUser = UserSchemaResponse.parse(updateUser);
 
   return responseUser;
 };

@@ -1,7 +1,6 @@
 import { AppDataSource } from '../../data-source';
 import { Contact } from '../../entities';
 import { AppError } from '../../errors/error';
-import { ContactSchemaResponse } from '../../schemas/contacts.schema';
 
 export const deleteContactService = async (
   userId: number,
