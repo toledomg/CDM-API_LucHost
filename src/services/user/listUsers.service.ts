@@ -1,13 +1,25 @@
 import { AppDataSource, userRepo } from '../../data-source';
 import { User } from '../../entities';
-import { UserSchemaRequest } from '../../schemas/user.schema';
+import { AppError } from '../../errors/error';
+import {
+  UserSchemaRequest,
+  UserSchemaResponse,
+} from '../../schemas/user.schema';
 
-export const listAllUsersService = async () => {
+export const listUsersService = async (userId: number, id: number) => {
   const userRepository: userRepo = AppDataSource.getRepository(User);
 
-  const users: User[] = await userRepository.find();
+  const user: User | null = await userRepository.findOne({
+    where: {
+      id: id,
+    },
+  });
 
-  const listUsers = UserSchemaRequest.parse(users);
+  if (!user) {
+    throw new AppError('User not found', 404);
+  }
 
-  return listUsers;
+  const listUser = UserSchemaResponse.parse(user);
+
+  return listUser;
 };

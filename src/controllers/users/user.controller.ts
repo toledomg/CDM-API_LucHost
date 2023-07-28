@@ -5,9 +5,10 @@ import {
   tUserResponse,
 } from '../../interfaces/user.interfaces';
 import { createUserService } from '../../services/user/createUsers.service';
-import { listAllUsersService } from '../../services/user/listUsers.service';
+import { listAllUsersService } from '../../services/user/listAllUsers.service';
 import { updateUserService } from '../../services/user/updateUser.service';
 import { deleteUserService } from '../../services/user/deleteUser.service';
+import { listUsersService } from '../../services/user/listUsers.service';
 
 export const createUserController = async (
   req: Request,
@@ -18,6 +19,19 @@ export const createUserController = async (
   const newUser = await createUserService(userData);
 
   return res.status(201).json(newUser);
+};
+
+export const listUserController = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const userId: number = parseInt(res.locals.token.id);
+  const { params } = req;
+  const { id } = params;
+
+  const user = await listUsersService(userId, Number(id));
+
+  return res.status(200).json(user);
 };
 
 export const listAllUserController = async (

@@ -2,6 +2,7 @@ import {
   createUserController,
   deleteUserController,
   listAllUserController,
+  listUserController,
   updateUserController,
 } from '../../controllers/users/user.controller';
 import { ensureBodyIsValidMiddleware } from '../../middleware/ensureBodyIsValid.middleware';
@@ -26,6 +27,13 @@ userRoutes.get(
   isTokenValidMiddleware,
   isAdminOrOwnerPermissionMiddleware('admin'),
   listAllUserController
+);
+
+userRoutes.get(
+  '/:id',
+  isTokenValidMiddleware,
+  isAdminOrOwnerPermissionMiddleware('ownerAndAdmin'),
+  listUserController
 );
 
 userRoutes.patch(
