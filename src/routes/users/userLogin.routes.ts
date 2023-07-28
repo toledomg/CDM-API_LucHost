@@ -1,12 +1,12 @@
+import { requestLoginSchema } from './../../schemas/login.schemas';
 import { ensureBodyIsValidMiddleware } from '../../middleware/ensureBodyIsValid.middleware';
 import { Router } from 'express';
-import { userSessionController } from '../../controllers/users/session/userSession.controller';
-import { requestLoginSchema } from '../../schemas/session.schemas';
+import { userLoginController } from '../../controllers/users/login/userLogin.controller';
 
-export const sessionRoutes: Router = Router();
+export const loginRoutes: Router = Router();
 
-sessionRoutes.post(
+loginRoutes.post(
   '',
   ensureBodyIsValidMiddleware(requestLoginSchema),
-  userSessionController
+  userLoginController
 );

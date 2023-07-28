@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { createTokenService } from '../../../services/user/session/userSession.service';
+import { createTokenService } from '../../../services/user/login/userLogin.service';
 import { tUserRequest } from '../../../interfaces/user.interfaces';
 
-export const userSessionController = async (
+export const userLoginController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
