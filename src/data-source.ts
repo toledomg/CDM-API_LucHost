@@ -22,17 +22,6 @@ const settings = (): DataSourceOptions => {
 
   if (!dbUrl) throw new Error("Missing env var: 'DATABASE_URL'");
 
-  // if (nodeEnv === 'production') {
-  //   return {
-  //     type: 'postgres',
-  //     url: dbUrl,
-  //     synchronize: false,
-  //     logging: true,
-  //     entities: [entitiesPath],
-  //     migrations: [migrationPath],
-  //   };
-  // }
-
   return {
     type: 'postgres',
     url: dbUrl,
