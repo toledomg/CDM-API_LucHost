@@ -7,18 +7,26 @@ import {
   listContactController,
   updateContactController,
 } from '../../controllers/contacts/contacts.controllers';
-import { ensureEmailContactsExistMiddleware } from '../../middleware/ensureEmailContactsExist.middleware';
+import { ensureBodyIsValidMiddleware } from '../../middleware/ensureBodyIsValid.middleware';
+import {
+  ContactSchemaRequest,
+  ContactSchemaUpdate,
+} from '../../schemas/contacts.schema';
 
 export const contactsRoutes: Router = Router();
 
-// contactsRoutes.use(isTokenValidMiddleware);
 contactsRoutes.post(
   '',
+  ensureBodyIsValidMiddleware(ContactSchemaRequest),
   isTokenValidMiddleware,
-  ensureEmailContactsExistMiddleware,
   createContactController
 );
 contactsRoutes.get('', isTokenValidMiddleware, listAllContactController);
 contactsRoutes.get('/:id', isTokenValidMiddleware, listContactController);
-contactsRoutes.patch('/:id', isTokenValidMiddleware, updateContactController);
+contactsRoutes.patch(
+  '/:id',
+  isTokenValidMiddleware,
+  ensureBodyIsValidMiddleware(ContactSchemaUpdate),
+  updateContactController
+);
 contactsRoutes.delete('/:id', isTokenValidMiddleware, deleteContactController);
