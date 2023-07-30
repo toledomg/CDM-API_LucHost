@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { AppDataSource } from '../data-source';
 import { AppError } from '../errors/error';
-import { User } from '../entities/user.entities';
 import { Contact } from '../entities';
 
 export const ensureEmailContactsExistMiddleware = async (
@@ -12,10 +11,11 @@ export const ensureEmailContactsExistMiddleware = async (
   const contactRepository = AppDataSource.getRepository(Contact);
 
   const { email } = req.body;
+  const userId = res.locals.token.id;
 
   if (email) {
     const emailVerify = await contactRepository.findOne({
-      where: { email: email },
+      where: { email: email, user: { id: userId } },
     });
 
     if (emailVerify) {

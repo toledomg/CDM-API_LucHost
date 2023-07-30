@@ -15,7 +15,7 @@ export class Contact {
   @Column({ type: 'varchar', length: 240 })
   name: string;
 
-  @Column({ type: 'varchar', length: 45, unique: true })
+  @Column({ type: 'varchar', length: 45 })
   email: string;
 
   @Column({ type: 'varchar', length: 11 })
