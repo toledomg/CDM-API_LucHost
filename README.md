@@ -49,7 +49,7 @@
 
 <Details>
 
-#### Clonar o repositório do Frontend
+## Clonar o repositório do Frontend
 
 ```bash
 git clone https://github.com/toledomg/CDM-Front_Luchost.git
@@ -57,15 +57,19 @@ git clone https://github.com/toledomg/CDM-Front_Luchost.git
 
 ### 💾 Instale as dependências Frontend
 
-`yarn`
+```bash
+yarn
+```
 
 ### 💾 Rodar servidor Frontend
 
-`yarn dev`
+```bash
+yarn dev
+```
 
 Abra em seu browser o endereço [http://localhost:5173](http://localhost:5173)
 
-#### Clonar o repositório do Backend
+## Clonar o repositório do Backend
 
 ```bash
 git clone https://github.com/toledomg/CDM-API_LucHost.git
@@ -73,11 +77,29 @@ git clone https://github.com/toledomg/CDM-API_LucHost.git
 
 ### 💾 Instale as dependências Backend
 
-`yarn`
+```bash
+yarn
+```
 
-### 💾 Rodar servidor Backend
+### 💾 Variáveis de Ambiente
 
-`yarn dev`
+- Crie um arquivo .env com o comando abaixo e preencha os dados correspondentes;
+
+```bash
+cp .env.example .env
+```
+
+### 💾 Migrations
+
+```bash
+yarn typeorm migration:run -d src/data-source.ts
+```
+
+### 💾 Rodar servidor local Backend
+
+```bash
+yarn dev
+```
 
 Url API Local: `http://localhost:3000`
 
