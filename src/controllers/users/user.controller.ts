@@ -60,6 +60,7 @@ export const deleteUserController = async (
   res: Response
 ): Promise<Response> => {
   const { id } = req.params;
+  console.log(id);
 
   await deleteUserService(Number(id));
 

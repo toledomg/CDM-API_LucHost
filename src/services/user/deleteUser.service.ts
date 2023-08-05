@@ -10,5 +10,5 @@ export const deleteUserService = async (id: number): Promise<void> => {
     },
   });
 
-  await userRepository.softRemove(userData!);
+  await userRepository.remove(userData!);
 };
