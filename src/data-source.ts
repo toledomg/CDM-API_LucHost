@@ -23,7 +23,7 @@ const settings = (): DataSourceOptions => {
   if (!dbUrl) throw new Error("Missing env var: 'DATABASE_URL'");
 
   return {
-    type: 'postgres',
+    type: 'mysql',
     url: dbUrl,
     synchronize: false,
     logging: true,

@@ -21,7 +21,7 @@ export class Contact {
   @Column({ type: 'varchar', length: 11 })
   phone: string;
 
-  @CreateDateColumn({ type: 'date' })
+  @CreateDateColumn({ type: 'timestamp' })
   createdAt: string;
 
   @ManyToOne(() => User, (user) => user.contacts, { onDelete: 'CASCADE' })

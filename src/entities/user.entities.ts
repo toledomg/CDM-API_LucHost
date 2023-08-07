@@ -32,14 +32,14 @@ export class User {
   @Column({ type: 'varchar', length: 11 })
   phone: string;
 
-  @CreateDateColumn({ type: 'date' })
-  createdAt: string;
+  @CreateDateColumn({ type: 'timestamp' })
+  createdAt: Date;
 
-  @UpdateDateColumn({ type: 'date' })
-  updatedAt: string;
+  @UpdateDateColumn({ type: 'timestamp' })
+  updatedAt: Date;
 
-  @DeleteDateColumn({ type: 'date' })
-  deletedAt: string | null;
+  @DeleteDateColumn({ type: 'timestamp' })
+  deletedAt: Date | null;
 
   @BeforeInsert()
   @BeforeUpdate()

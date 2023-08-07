@@ -5,7 +5,7 @@ export const ContactSchema = z.object({
   name: z.string().max(240),
   email: z.string().email().max(45),
   phone: z.string().max(11),
-  createdAt: z.string(),
+  createdAt: z.date(),
 });
 
 export const ContactSchemaRequest = ContactSchema.omit({

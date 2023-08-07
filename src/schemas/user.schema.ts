@@ -7,9 +7,9 @@ export const userSchema = z.object({
   password: z.string().max(20),
   phone: z.string().max(11),
   admin: z.boolean().optional().default(false),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-  deletedAt: z.string().nullish(),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+  deletedAt: z.date().nullish(),
 });
 
 export const UserSchemaRequest = userSchema.omit({
